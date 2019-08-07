@@ -51,7 +51,7 @@ router.get('/', (req, res, next) => {
           companyLinkedinUrl: req.body.companyLinkedinUrl,
           companyGithubUrl: req.body.companyGithubUrl,
         }) 
-        if(req.body.theUser) {
+        if(req.user) {
           theCompany.companyUsers = [req.user._id]
         }
         theCompany.save()
