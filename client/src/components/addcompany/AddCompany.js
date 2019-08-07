@@ -18,7 +18,7 @@ class AddCompany extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:5000/api/companies/create", {
+    axios.post(`${process.env.REACT_APP_BASE}/companies/create`, {
       companyName: this.state.companyName,
       companyDomain: this.state.companyDomain,
       companyRootEmail: this.state.companyRootEmail,

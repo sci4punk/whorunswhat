@@ -22,7 +22,7 @@ class SearchResults extends Component {
   }
 
   deleteCompany = (idOfCompany) =>{
-    axios.delete(`http://localhost:5000/api/companies/${idOfCompany}`)
+    axios.delete(`${process.env.REACT_APP_BASE}/companies/${idOfCompany}`)
     .then(()=>{
         this.props.getData();
     })
@@ -49,7 +49,7 @@ class SearchResults extends Component {
 
   // handleFormSubmit = (event) => {
   //   event.preventDefault();
-  //   axios.post("http://localhost:5000/api/companies", {
+  //   axios.post("${process.env.REACT_APP_BASE}/companies", {
   //     companyName: this.state.companyName,
   //     companyDomain: this.state.companyDomain,
   //     companyRootEmail: this.state.companyRootEmail,

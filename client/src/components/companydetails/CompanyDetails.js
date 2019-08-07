@@ -23,7 +23,7 @@ class CompanyDetails extends Component{
   }
 
   deleteTechnology = (companyId, techId) =>{
-    axios.put('http://localhost:5000/api/companies/technologies',{company: companyId,technology: techId })
+    axios.put(`${process.env.REACT_APP_BASE}/companies/technologies`,{company: companyId,technology: techId })
       .then(()=>{
         this.props.getData();
         })

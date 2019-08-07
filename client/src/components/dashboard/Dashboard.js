@@ -22,7 +22,7 @@ class Dashboard extends Component {
   }
 
   deleteCompany = (idOfCompany) =>{
-    axios.delete(`http://localhost:5000/api/companies/${idOfCompany}`)
+    axios.delete(`${process.env.REACT_APP_BASE}/companies/${idOfCompany}`)
     .then(()=>{
         this.props.getData();
     })

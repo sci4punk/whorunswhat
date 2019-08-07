@@ -20,7 +20,7 @@ class EditTechnology extends Component {
     const techRefUrl = this.state.techRefUrl;
     const techTopic = this.state.techTopic;
     event.preventDefault();
-    axios.post(`http://localhost:5000/api/technologies/update/${this.props.theTechnology._id}`,
+    axios.post(`${process.env.REACT_APP_BASE}/technologies/update/${this.props.theTechnology._id}`,
       { techName: techName, 
         techIconUrl: techIconUrl,
         techDescription: techDescription,

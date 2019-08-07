@@ -27,7 +27,7 @@ class App extends React.Component {
   }
 
   getAllCompanies = () => {
-    axios.get(`http://localhost:5000/api/companies`, {withCredentials: true})
+    axios.get(`${process.env.REACT_APP_BASE}/companies`, {withCredentials: true})
     .then(responseFromApi => {
       this.setState({
         listOfCompanies: responseFromApi.data, ready: true

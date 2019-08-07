@@ -76,11 +76,16 @@ app.use((req, res, next) => {
 
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:3000', 'https://whorunswhat.herokuapp.com']
+  origin: ['http://localhost:3000']
 }));
 
 // const index = require('./routes/index');
 // app.use('/', index);
+
+
+app.use((req, res, next) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/auth', userRoutes);

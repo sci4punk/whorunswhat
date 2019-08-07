@@ -16,7 +16,7 @@ class Search extends React.Component {
   }
 
   getAllCompanies = () => {
-    axios.get(`http://localhost:5000/api/companies`)
+    axios.get(`${process.env.REACT_APP_BASE}/companies`)
     .then(responseFromApi => {
       this.setState({
         listOfCompanies: responseFromApi.data,
@@ -63,7 +63,7 @@ class Search extends React.Component {
     
     
     filteredCompaniesApi.forEach(oneCompany => {
-      axios.post("http://localhost:5000/api/companies/create", {
+      axios.post(`${process.env.REACT_APP_BASE}/companies/create`, {
         companyName: oneCompany.name,
         companyDomain: oneCompany.domain,
         companyLogoUrl: oneCompany.logo

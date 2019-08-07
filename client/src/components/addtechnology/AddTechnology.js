@@ -17,7 +17,7 @@ class AddTechnology extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:5000/api/technologies", {
+    axios.post(`${process.env.REACT_APP_BASE}/technologies`, {
       techName: this.state.techName,
       techIconUrl: this.state.techIconUrl,
       techDescription: this.state.techDescription,

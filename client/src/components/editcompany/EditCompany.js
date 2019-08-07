@@ -25,7 +25,7 @@ class EditCompany extends Component {
     const companyLinkedinUrl = this.state.companyLinkedinUrl;
     const companyGithubUrl = this.state.companyGithubUrl;
     event.preventDefault();
-    axios.post(`http://localhost:5000/api/companies/update/${this.props.theCompany._id}`,
+    axios.post(`${process.env.REACT_APP_BASE}/companies/update/${this.props.theCompany._id}`,
       { companyName: companyName, 
         companyDomain: companyDomain,
         companyRootEmail: companyRootEmail,
