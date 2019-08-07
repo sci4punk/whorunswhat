@@ -18,7 +18,7 @@ class AddCompany extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    axios.post(`${process.env.REACT_APP_BASE}/companies/create`, {
+    axios.post(`${process.env.REACT_APP_BASE}/companies`, {
       companyName: this.state.companyName,
       companyDomain: this.state.companyDomain,
       companyRootEmail: this.state.companyRootEmail,
@@ -26,7 +26,7 @@ class AddCompany extends Component {
       companySiteUrl: this.state.companySiteUrl,
       companyLinkedinUrl: this.state.companyLinkedinUrl,
       companyGithubUrl: this.state.companyGithubUrl,
-      companyUsers: [this.props.theUser],
+      // companyUsers: [this.props.theUser],
       }, {withCredentials: true })
     .then( () => {
       this.props.getData();

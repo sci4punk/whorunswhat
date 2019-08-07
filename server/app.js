@@ -92,8 +92,17 @@ const technologyRoutes = require('./routes/technologyRoutes');
 app.use('/api/technologies', technologyRoutes);
 
 
+const root = path.join(__dirname, 'public/');
+app.use(express.static(root));
 app.use((req, res, next) => {
-  res.sendFile(__dirname + "/public/index.html");
+    if (
+        req.method === 'GET' &&
+        req.accepts('html') &&
+        !req.is('json') &&
+        !req.path.includes('.')
+    ) {
+        res.sendFile('index.html', { root });
+    } else next();
 });
 
 

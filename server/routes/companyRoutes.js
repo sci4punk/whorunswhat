@@ -35,7 +35,41 @@ router.get('/', (req, res, next) => {
     
     Company.find({companyName: req.body.companyName})
     .then(companyFromDb => {
-      console.log(req.body)
+      console.log("*************************",req.user)
+      // console.log("the company in the db ====== ", companyFromDb)
+      if(companyFromDb.length) {
+        // console.log("if condition has been met")
+        res.json(companyFromDb)
+      } else {
+        // console.log("else condition has been met")
+        let theCompany = new Company({
+          companyName: req.body.companyName,
+          companyDomain: req.body.companyDomain,
+          companyRootEmail: req.body.companyRootEmail,
+          companyLogoUrl: req.body.companyLogoUrl,
+          companySiteUrl: req.body.companySiteUrl,
+          companyLinkedinUrl: req.body.companyLinkedinUrl,
+          companyGithubUrl: req.body.companyGithubUrl,
+        }) 
+        theCompany.save()
+    
+        .then((singleCompany)=>{
+          // console.log("the created company <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ", singleCompany)
+          res.json(singleCompany);
+        })
+        .catch((err)=>{
+          res.json(err);
+        })
+      }
+    }).catch(err => res.status(400).json(err))
+  })
+
+  router.post('/', (req, res, next)=>{
+    console.log("creating company");
+    
+    Company.find({companyName: req.body.companyName})
+    .then(companyFromDb => {
+      console.log("*************************",req.user)
       // console.log("the company in the db ====== ", companyFromDb)
       if(companyFromDb.length) {
         // console.log("if condition has been met")
@@ -66,8 +100,6 @@ router.get('/', (req, res, next) => {
       }
     }).catch(err => res.status(400).json(err))
   })
-
-
 
   router.post('/update/:id', (req, res, next)=>{
     Company.findByIdAndUpdate(req.params.id, {
