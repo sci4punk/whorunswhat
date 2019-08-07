@@ -11,7 +11,7 @@ const path         = require('path');
 const cors         = require('cors');
 const session = require("express-session");
 const passport = require("passport");
-// const bcrypt = require("bcryptjs");
+
 // const LocalStrategy = require("passport-local").Strategy;
 // const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 // const flash = require("connect-flash");
