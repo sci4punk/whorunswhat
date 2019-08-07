@@ -82,11 +82,6 @@ app.use(cors({
 // const index = require('./routes/index');
 // app.use('/', index);
 
-
-app.use((req, res, next) => {
-  res.sendFile(__dirname + "/public/index.html");
-});
-
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/auth', userRoutes);
 
@@ -95,6 +90,11 @@ app.use('/api/companies', companyRoutes);
 
 const technologyRoutes = require('./routes/technologyRoutes');
 app.use('/api/technologies', technologyRoutes);
+
+
+app.use((req, res, next) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 
 module.exports = app;
