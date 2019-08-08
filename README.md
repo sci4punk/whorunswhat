@@ -1,4 +1,4 @@
-![whorunswhat dashboard screenshot](/public/images/whorunswhat-home.jpg)
+![whorunswhat dashboard screenshot](/server/public/images/whorunswhat-home.jpg)
 
 # WhoRunsWhat - Find out which tech stacks run at your favorite companies
 
