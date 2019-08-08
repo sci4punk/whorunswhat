@@ -81,8 +81,8 @@ class Dashboard extends Component {
     if(this.props.ready)
       return (
         <div className="container-fluid">
-          <div className=""><AddCompany getData={this.props.getData}/></div>
           <div className="card-columns">{this.showTheCompanies()}</div>
+          <div className=""><AddCompany getData={this.props.getData}/></div>
         </div>  
       ) 
       else

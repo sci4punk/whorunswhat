@@ -95,8 +95,9 @@ class CompanyIndex extends Component {
         <div className="container-fluid">
           
           <div className="card-columns">{this.showCompanies()}</div>
+          {this.props.theUser &&
           <div className=""><AddCompany getData={this.props.getData}/></div>
-          
+          }
         </div>  
          
       )

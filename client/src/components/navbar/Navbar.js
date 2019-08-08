@@ -14,7 +14,7 @@ function Navbar(props){
     <nav className="navbar navbar-expand-lg collapse-md navbar-dark">
       
       <div>
-      <Link className="logo" to="/"><img src="../wrw-logo.png" alt="WhoRunsWhat" /></Link>
+      <a className="logo" href="/"><img src="../wrw-logo.png" alt="WhoRunsWhat" /></a>
       </div>
         {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar1" aria-controls="Navbar1" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
