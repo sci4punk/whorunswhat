@@ -46,26 +46,33 @@ class AddTechnology extends Component {
 
   render(){
     return(
-      <div>
-        <form className="add-technology" onSubmit={this.handleFormSubmit}>
+      
+      <span>
+      {/* <h3 className="card-header">{this.state.companyName}</h3> */}
+      <form className="card-body" onSubmit={this.handleFormSubmit}>
           <label>Technology Name:</label>
-          <input type="text" name="techName" value={this.state.techName} onChange={this.handleChange}/>
+          <input className="form-control" type="text" name="techName" value={this.state.techName} onChange={ e => this.handleChange(e)}/>
           <label>Technology Icon URL:</label>
-          <input type="text" name="techIconUrl" value={this.state.techIconUrl} onChange={this.handleChange} />
+          <input className="form-control" type="text" name="techIconUrl" value={this.state.techIconUrl} onChange={ e => this.handleChange(e)} />
           <label>Technology Description:</label>
-          <textarea name="techDescription" value={this.state.techDescription} onChange={this.handleChange} />
+          <textarea className="form-control" name="techDescription" rows="3" value={this.state.techDescription} onChange={ e => this.handleChange(e)} />
           <label>Technology Reference URL:</label>
-          <input type="text" name="techRefUrl" value={this.state.techRefUrl} onChange={this.handleChange} />
-          <select name="techTopic" value={this.state.techTopic} onChange={this.handleChange}>
+          <input className="form-control" type="text" name="techRefUrl" value={this.state.techRefUrl} onChange={ e => this.handleChange(e)} />
+          <label>Topic:</label>
+          <select className="form-control" name="techTopic" value={this.state.techTopic} onChange={ e => this.handleChange(e)}>
             <option value="Full Stack">Full Stack</option>
             <option value="Front End">Front End</option>
             <option value="Backend">Backend</option>
             <option value="Systems">Systems</option>
             <option value="Data">Data</option>
           </select>          
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
+          <div className="text-right">
+            <input className="btn btn-sm btn-success save-cancel" type="submit" value="Add" />
+          {/* <button className="btn btn-sm btn-secondary save-cancel" onClick={ e => this.props.resetEditingSituation()}>Cancel</button> */}
+        </div>
+      </form>
+    </span>
+    
     )
   }
 }

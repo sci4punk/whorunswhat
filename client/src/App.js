@@ -9,7 +9,7 @@ import Login from './components/login/Login';
 import AuthService from './services/AuthService';
 import Navbar from './components/navbar/Navbar';
 import Search from './components/search/Search';
-// import SearchResults from './components/searchresults/SearchResults';
+import SearchResults from './components/searchresults/SearchResults';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -24,6 +24,12 @@ class App extends React.Component {
       searchResults: [],
   };
   this.service = new AuthService();
+  }
+
+  getSearchResults = (companiesListClone) => {
+    this.setState({
+      searchResults: companiesListClone, ready: true
+    })
   }
 
   getAllCompanies = () => {
@@ -86,11 +92,23 @@ class App extends React.Component {
           <div className="container-fluid mx-auto"><Login getUser={this.getCurrentlyLoggedInUser} toggleForm={this.toggleForm} /></div>
         }
 
-          <Search />
+          <Search getSearchResults={this.getSearchResults} />
 
       <div className="container-fluid">
         
         <Switch>
+
+        {this.state.searchResults.length &&
+          <Route exact path="/" render ={(props)=> <SearchResults
+            {...props} 
+            searchResults = {this.state.searchResults}
+            companiesListClone ={this.state.companiesListClone}
+            ready = {this.state.ready}
+            getData = {this.getAllCompanies}
+            theUser = {this.state.currentlyLoggedIn}
+            />} />
+        }
+        {!this.state.searchResults.length &&
           <Route exact path="/" render ={(props)=> <CompanyIndex
             {...props} 
             theUser = {this.state.currentlyLoggedIn} 
@@ -98,15 +116,8 @@ class App extends React.Component {
             getData = {this.getAllCompanies}
             ready = {this.state.ready}
             />} />
-
-          <Route exact path="/companies" render ={(props)=> <CompanyIndex
-            {...props} 
-            theUser = {this.state.currentlyLoggedIn} 
-            allTheCompanies ={this.state.listOfCompanies}
-            getData = {this.getAllCompanies}
-            ready = {this.state.ready}
-            />} />
-
+        }
+        
           <Route exact path="/dashboard" render ={(props)=> <Dashboard
             {...props} 
             theUser = {this.state.currentlyLoggedIn} 
@@ -114,7 +125,7 @@ class App extends React.Component {
             getData = {this.getAllCompanies}
             ready = {this.state.ready}
             />} />
-
+          
           <Route exact path="/companies/:theID" render ={(props)=> <CompanyDetails
             {...props} 
             allTheCompanies ={this.state.listOfCompanies}
@@ -122,15 +133,6 @@ class App extends React.Component {
             getData = {this.getAllCompanies}
             theUser = {this.state.currentlyLoggedIn}
             />} />
-
-          {/* <Route exact path="/searchresults" render ={(props)=> <SearchResults
-            {...props} 
-            allTheCompanies ={this.state.listOfCompanies}
-            ready = {this.state.ready}
-            getData = {this.getAllCompanies}
-            theUser = {this.state.currentlyLoggedIn}
-            />} /> */}
-
 
         </Switch>
       </div>

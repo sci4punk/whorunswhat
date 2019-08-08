@@ -31,6 +31,7 @@ class Search extends React.Component {
       const { name, value } = e.target;
       this.setState({ [name]: value });
       this.checkForCompany();
+
     }
 
   async checkForCompany() {
@@ -41,7 +42,7 @@ class Search extends React.Component {
       const matchedCompanies = companyListClone.filter((company, i) => {
       return (company.companyName.toUpperCase().includes(this.state.searchField.toUpperCase()))
       }  
-    )                        // v - should be 1 to test, not 3 because if there's at least one, then I should not hit the API to have a cyclical looping issue
+    )
     if(matchedCompanies.length <= 1){
       console.log("the if condition in the search")
       let companiesFromApi = await this.getData(this.state.searchField);
@@ -60,8 +61,7 @@ class Search extends React.Component {
         filteredCompaniesApi = companiesFromApi;
       }
     }
-    
-    
+        
     filteredCompaniesApi.forEach(oneCompany => {
       axios.post(`${process.env.REACT_APP_BASE}/companies/create`, {
         companyName: oneCompany.name,
@@ -77,6 +77,7 @@ class Search extends React.Component {
     
     console.log('matched:', matchedCompanies,'filtered:', filteredCompaniesApi)
     this.setState({companiesListClone: matchedCompanies, apiCompaniesList: filteredCompaniesApi});
+    this.props.getSearchResults(this.state.companiesListClone)
   };
 
   getData(name) {
@@ -102,11 +103,6 @@ class Search extends React.Component {
             onChange={(e)=>{this.onInputChange(e)}} 
             placeholder="enter a company name..." 
             />
-            {/* <span className="input-group-append">
-              <button className="btn btn-outline-secondary disabled" type="button">
-                  <i className="fa fa-search"></i>
-              </button>
-            </span> */}
       </div>
     </div>
     )}

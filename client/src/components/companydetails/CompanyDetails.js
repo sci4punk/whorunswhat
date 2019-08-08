@@ -97,38 +97,44 @@ class CompanyDetails extends Component{
       return(
         <div className="container">
         <div>
-        <div className="card text-center mx-auto" key={theActualCompany._id}>
-          <img src={theActualCompany.companyLogoUrl} className="card-img-top mx-auto" alt={theActualCompany.companyName} />
-            <div className="card-body">
-            <h5 className="card-title"><Link to={`/companies/${theActualCompany._id}`}>{theActualCompany.companyName}</Link></h5>
-            <p className="card-text">{theActualCompany.companyDomain}</p>
-            <a href={theActualCompany.companyLinkedinUrl} className="media-text" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in btn btn-lg btn-outline-primary"></i></a>&nbsp;
-          <a href={theActualCompany.companyGithubUrl} className="media-text" target="_blank" rel="noopener noreferrer"><i className="fab fa-github btn btn-lg btn-outline-primary"></i></a>
-          </div>
-          <div className="card-footer">
-            <small className="text-muted">Last updated on {theActualCompany.updated_at.substring(0, 10)}</small>
-          </div>
-        </div>
-        
+          <div className="card text-center mx-auto" key={theActualCompany._id}>
+            <img src={theActualCompany.companyLogoUrl} className="card-img-top mx-auto" alt={theActualCompany.companyName} />
+              <div className="card-body">
+              <h5 className="card-title"><Link to={`/companies/${theActualCompany._id}`}>{theActualCompany.companyName}</Link></h5>
+              <p className="card-text">{theActualCompany.companyDomain}</p>
 
-        {theActualCompany.companyTechnologies.length > 0 && 
-          <div className="mx-auto">
-            <br />
-            <div className="text-center mx-auto"><h5>Technologies at {theActualCompany.companyName}</h5></div>
-              <div className="mx-auto">
-              {showTech()}
-              </div>
+              {theActualCompany.companyLinkedinUrl &&
+              <a href={theActualCompany.companyLinkedinUrl} className="media-text" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in btn btn-lg btn-outline-primary"></i></a>
+              }
+
+              {theActualCompany.companyGithubUrl &&
+              <a href={theActualCompany.companyGithubUrl} className="media-text" target="_blank" rel="noopener noreferrer"><i className="fab fa-github btn btn-lg btn-outline-primary"></i></a>
+              }
+              
             </div>
-    
-        }
-        <div className="right-side-column" style={{float: 'right'}}>
+            <div className="card-footer">
+              <small className="text-muted">Last updated on {theActualCompany.updated_at.substring(0, 10)}</small>
+            </div>
+          </div>
+          
+
+          {theActualCompany.companyTechnologies.length > 0 && 
+            <div className="mx-auto">
+              <br />
+              <div className="text-center mx-auto"><h5>Technologies at {theActualCompany.companyName}</h5></div>
+                <div className="mx-auto">
+                {showTech()}
+                </div>
+              </div>
+          }
+        </div>
+        <div>
           <AddTechnology 
           theCompanyToAddTechnologiesTo = {theActualCompany._id} 
           getData = {this.props.getData}
           />
-          </div>
         </div>
-        </div>
+      </div>
         
         )
         else

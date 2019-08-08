@@ -56,7 +56,7 @@ class Dashboard extends Component {
           {company.companyUsers.includes(this.props.theUser._id) && 
           <div>
             <button className="btn btn-sm btn-primary my-2" onClick={()=>{this.changeEditing(index)}} >Edit</button>
-            {/* <button className="btn btn-sm btn-outline-danger" onClick = {()=>{this.deleteCompany(company._id)}} >Delete</button> */}
+            <button className="btn btn-sm btn-outline-danger" onClick = {()=>{this.deleteCompany(company._id)}} >Delete</button>
           </div>
           }
         </div>
