@@ -31,12 +31,23 @@ class CompanyIndex extends Component {
     })
   }
 
-
   showCompanies = () =>{
-
   const AllCompanies = this.props.allTheCompanies
     return AllCompanies.map((company, index) => {
     
+      const showEditDeleteButtons = () => {
+        if(this.props.theUser && company.companyUsers.includes(this.props.theUser._id) ){
+          return (<div>
+            <button className="btn btn-sm btn-primary" onClick={()=>{this.changeEditing(index)}} >Edit</button>
+            <button className="btn btn-sm btn-outline-danger" onClick = {()=>{this.deleteCompany(company._id)}} >Delete</button>
+          </div>);
+          
+      } else {
+        return null;
+      }
+      }
+
+
     if(this.state.editing !== index){
       return (
         <div className="card text-center" key={company._id}>
@@ -50,19 +61,15 @@ class CompanyIndex extends Component {
             <p className="card-text">{company.companyDomain}</p>
             
             {company.companyLinkedinUrl &&
-            <a href={company.companyLinkedinUrl} className="media-text" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in btn btn-lg btn-outline-primary"></i></a>
+            <a href={company.companyLinkedinUrl} className="media-text" target="_blank" rel="noopener noreferrer"><i className='fab fa-linkedin-in btn btn-lg btn-outline-primary'></i></a>
             }
 
             {company.companyGithubUrl &&
-            <a href={company.companyGithubUrl} className="media-text" target="_blank" rel="noopener noreferrer"><i className="fab fa-github btn btn-lg btn-outline-primary"></i></a>
+            <a href={company.companyGithubUrl} className="media-text" target="_blank" rel="noopener noreferrer"><i className='fab fa-github btn btn-lg btn-primary'></i></a>
             }
 
-            {/* {company.companyUsers.includes(this.props.theUser._id) && 
-            <div>
-              <button className="btn btn-sm btn-outline-primary" onClick={()=>{this.changeEditing(index)}} >Edit</button>
-              <button className="btn btn-sm btn-outline-dark" onClick = {()=>{this.deleteCompany(company._id)}} >Delete</button>
-            </div>
-            } */}
+            {showEditDeleteButtons()}
+
           </div>
           <div className="card-footer">
             <small className="text-muted">Last updated on {company.updated_at.substring(0, 10)}</small>
@@ -88,7 +95,7 @@ class CompanyIndex extends Component {
         <div className="container-fluid">
           
           <div className="card-columns">{this.showCompanies()}</div>
-          {/* <div className=""><AddCompany getData={this.props.getData}/></div> */}
+          <div className=""><AddCompany getData={this.props.getData}/></div>
           
         </div>  
          
