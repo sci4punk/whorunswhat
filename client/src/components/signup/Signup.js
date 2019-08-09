@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthService from '../../services/AuthService';
+import './signup.css';
 
 class Signup extends Component {
   constructor(props){
@@ -37,29 +38,23 @@ class Signup extends Component {
   render(){
     return(
       <form onSubmit = {this.tryToSignUp}>
-        <h3>Signup For An Account</h3>
-          <legend>Username</legend>
-          <input value={this.state.username} name="username" onChange={this.handleChange} />
-
-          <legend>Password</legend>
-          <input value={this.state.password} name="password" onChange={this.handleChange} />
-
-          <legend>Email Address</legend>
-          <input value={this.state.personalEmail} name="personalEmail" onChange={this.handleChange} />
-
-          <legend>Full Name</legend>
-          <input value={this.state.fullName} name="fullName" onChange={this.handleChange} />
-
-          <legend>Role</legend>
-          <select name="userRole" value={this.state.userRole} onChange={this.handleChange}>
-            <option value="Full Stack">Full Stack</option>
-            <option value="Front End">Front End</option>
-            <option value="Backend">Backend</option>
-            <option value="Systems">Systems</option>
-            <option value="Data">Data</option>
-          </select>      
-        
-        <button>Submit</button>
+        <div className="container login-form border rounded bg-dark">
+          <div className="row">
+            <div className="col">
+            <input className="form-control" value={this.state.username} name="username" type="text" onChange={this.handleChange} placeholder="choose a username" />
+            </div>
+            <div className="col">
+            <input className="form-control" value={this.state.password} name="password" type="password" onChange={this.handleChange} placeholder="enter a password" />
+            </div>
+            <div className="col">
+            <input className="form-control" value={this.state.personalEmail} name="personalEmail" onChange={this.handleChange} placeholder="email address" />
+            </div>
+            <div className="col">
+            <input className="form-control" value={this.state.fullName} name="fullName" onChange={this.handleChange} placeholder="full name" />
+            </div>
+            <button className="btn btn-sm btn-primary">Sign Up</button>
+          </div>
+        </div>
       </form>
     )
   }

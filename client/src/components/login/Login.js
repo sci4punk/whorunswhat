@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthService from '../../services/AuthService';
+import './login.css';
 
 class Login extends Component {
   constructor(props){
@@ -27,23 +28,29 @@ class Login extends Component {
   render(){
     return(
       
-
-
-
       <form onSubmit = {this.tryToLogin}>
-        <h3>Login</h3>
-          <legend>Username</legend>
-          <input value={this.state.usernameInput}
-            name="usernameInput"
-            onChange={this.handleChange}
-          />
-
-          <legend>Password</legend>
-          <input value={this.state.passwordInput} 
-            name="passwordInput"
-            onChange={this.handleChange}
-          />
-        <button>Submit</button>
+        <div className="container login-form border rounded bg-dark">
+          <div className="row">
+            <div className="col">
+              <input className="form-control" type="text" value={this.state.usernameInput}
+              name="usernameInput"
+              onChange={this.handleChange}
+              placeholder="username"
+              />
+              </div>
+              
+              <div className="col">
+              <input className="form-control" type="password" value={this.state.passwordInput} 
+                name="passwordInput"
+                onChange={this.handleChange}
+                placeholder="password"
+              />
+              </div>
+              {/* <div className="col"> */}
+              <button className="btn btn-sm btn-primary">Login</button>
+            {/* </div> */}
+          </div>
+        </div>
       </form>
 
     )
