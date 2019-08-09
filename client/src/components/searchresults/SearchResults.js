@@ -55,12 +55,13 @@ class SearchResults extends Component {
             <a href={company.companyGithubUrl} className="media-text" target="_blank" rel="noopener noreferrer"><i className="fab fa-github btn btn-lg btn-outline-primary"></i></a>
             }
 
-            {/* {company.companyUsers.includes(this.props.theUser._id) && 
+            {/* {this.props.theUser && company.companyUsers.includes(this.props.theUser._id) &&
             <div>
-              <button className="btn btn-sm btn-outline-primary" onClick={()=>{this.changeEditing(index)}} >Edit</button>
-              <button className="btn btn-sm btn-outline-dark" onClick = {()=>{this.deleteCompany(company._id)}} >Delete</button>
+              <button className="btn btn-sm btn-primary" onClick={()=>{this.changeEditing(index)}} >Edit</button>
+              <button className="btn btn-sm btn-outline-danger" onClick = {()=>{this.deleteCompany(company._id)}} >Delete</button>
             </div>
             } */}
+
           </div>
           <div className="card-footer">
             <small className="text-muted">Last updated on {company.updated_at.substring(0, 10)}</small>

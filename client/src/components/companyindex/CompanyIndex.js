@@ -53,7 +53,7 @@ class CompanyIndex extends Component {
         <div className="card text-center" key={company._id}>
 
           
-          <img src={company.companyLogoUrl} className="card-img-top" alt={company.companyName}  onError={(e)=>{e.target.onerror = null; e.target.src="white-image.png"}} />
+          <img src={company.companyLogoUrl} className="card-img-top" alt={company.companyName} onError={(e)=>{e.target.onerror = null; e.target.src="white-image.png"}} />
           
 
           <div className="card-body">
@@ -65,7 +65,7 @@ class CompanyIndex extends Component {
             }
 
             {company.companyGithubUrl &&
-            <a href={company.companyGithubUrl} className="media-text" target="_blank" rel="noopener noreferrer"><i className='fab fa-github btn btn-lg btn-primary'></i></a>
+            <a href={company.companyGithubUrl} className="media-text" target="_blank" rel="noopener noreferrer"><i className='fab fa-github btn btn-lg btn-outline-primary'></i></a>
             }
 
             {showEditDeleteButtons()}
