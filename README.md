@@ -2,7 +2,7 @@
 
 # WhoRunsWhat - Find out which tech stacks run at your favorite companies
 
-This is the third project [Steve Englander](https://www.linkedin.com/in/recsci) worked on at [Ironhack](http://www.ironhack.com) in August, 2019
+This is the third project worked on at [Ironhack](http://www.ironhack.com) in August, 2019
 
 WhoRunsWhat currently runs on Heroku, and can be found here: http://whorunswhat.herokuapp.com/
 
@@ -11,5 +11,3 @@ WhoRunsWhat currently runs on Heroku, and can be found here: http://whorunswhat.
 Once a few more features are added, it will be moved to it's new home at it's proper domain: whorunswhat.com
 
 The WhoRunsWhat Google Chrome extension is planned for future development
-
-For more information, you can contact Steve Englander through [Github](https://github.com/confidenti-al)
